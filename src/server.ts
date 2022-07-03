@@ -1,15 +1,16 @@
-import express, { Express, Request, Response,  } from 'express'
+import express, { Express } from 'express'
 import {Error} from 'mongoose'
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
+import personRoutes from './routes/personRoutes';
+import homeRoutes from './routes/homeRoutes';
 
 import * as dotenv from 'dotenv'
-
-
-
 dotenv.config();
 const app: Express = express();
 
 //forma de ler JSON /middlewares -recursos que sao executados entre as requisicoes de respostas
+
 app.use(
     express.urlencoded({
         extended: true
@@ -18,16 +19,10 @@ app.use(
 
 app.use(express.json());
 
+//Rotas da aplicacao
 
-//endPoint inicial / rota
-app.get('/', (req: Request, res: Response) => {
-    //mostrar a req
-    res.json(
-        {
-            message: 'Oi Express!'
-        }
-    )
-})
+app.use('/person', personRoutes);
+app.use('/', homeRoutes);
 
 
 //entregar uma porta

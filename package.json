@@ -7,7 +7,7 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev src/server.ts",
-    "start": "nodemon ./dist/server.js localhost 3000"
+    "start": "nodemon ./dist/server.js localhost 5500"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "@types/cors": "^2.8.12",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.4.2",

@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 import personRoutes from './routes/personRoutes';
 import homeRoutes from './routes/homeRoutes';
-
+import cors from 'cors'
 import * as dotenv from 'dotenv'
 dotenv.config();
 const app: Express = express();
@@ -16,6 +16,8 @@ app.use(
         extended: true
     })
 )
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -29,7 +31,7 @@ app.use('/', homeRoutes);
 mongoose.connect(`${process.env.DB_CONNECTOR}`)
 .then(()=>{
     console.log("Conectamos ao MongoDB!")
-    app.listen(3000)
+    app.listen(5500)
 })
 .catch((err:Error)=>{
     console.log(err)
